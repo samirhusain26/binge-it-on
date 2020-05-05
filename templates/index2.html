@@ -61,13 +61,16 @@ body {
     <div class="movie">
         <h2><u>Binge It On</u></h2>
         <form action="{{ url_for('main') }}" method="POST">
-            <input type="text" id="year" name="year" placeholder="Movies not older than" />
-            <input type="text" id="rating" name="rating" placeholder="Rating atleast" />
-            <input type="text" id="genre" name="genre" placeholder="9648 for mystery" />
+            <input type="text" id="year" name="year" placeholder="Movies not older than"  />
+            <input type="text" id="rating" name="rating" placeholder="Rating atleast"  />
+            <input type="text" id="genre" name="genre" placeholder="9648 for mystery, 28 for action, 35 for comedy, "  />
             <br>
             <input type="submit" id="submission_button" value="Submit"/>
         </form>
-        <p style="color: #919191; padding: 1em;">"Movie suggestion here"</p>
+        <article class="thumb">
+            <a href="https://youtu.be/w44dlsnJ1no" class="image"><img src="https://image.tmdb.org/t/p/w185{{ poster_path }}" alt="Image" /></a>
+            <h2>{{ movie_names }}</h2>
+        </article>
         <br>
     </div>
 <!-- partial -->

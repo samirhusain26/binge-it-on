@@ -5,6 +5,7 @@ from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
 import requests
 import pandas as pd
+import random
 
 api_key = 'e5e135ca8f4f2ecfe0a67c9998a5441a'
 
@@ -43,6 +44,12 @@ def main():
         yr = flask.request.form['year']
         rate = flask.request.form['rating']
         gen = flask.request.form['genre']
+        if not yr:
+            yr='1960'
+        if not rate:
+            rate = '3'
+        if not gen:
+            gen = '28,12,16'
         response = requests.get('https://api.themoviedb.org/3/discover/movie?api_key=' + api_key
                                 + '&language=en-US&sort_by=popularity.desc&include_adult=true&include_video=false&page=1'
                                   '&primary_release_date.gte=' + yr
@@ -50,12 +57,10 @@ def main():
                                 + '&with_genres=' + gen)
         result = response.json()
         movies = result['results']
-        names=[]
-        dates=[]
-        for film in movies:
-            names.append(film['title'])
-            dates.append(film['release_date'])
-        return flask.render_template('positive.html',movie_names=names,movie_date=dates,search_name='Hello')
+        rand_movie=random.choice(movies)
+        names=rand_movie['title']
+        poster=rand_movie['poster_path']
+        return flask.render_template('index2.html',movie_names=names,poster_path=poster)
 
 if __name__ == '__main__':
     app.run()
