@@ -64,7 +64,7 @@ def main():
         movies = result['results']
         rand_movie = random.choice(movies)
         names = rand_movie['title']
-        poster = rand_movie['poster_path']
+        poster1 = rand_movie['poster_path']
         response1 = requests.get("https://api.themoviedb.org/3/movie/" + str(rand_movie['id']) +
                                  "/videos?api_key=" + api_key +
                                  "& language = en - US")
@@ -92,7 +92,7 @@ def main():
                 m_dates.append(mov['release_date'])
                 m_id.append(mov['id'])
         else:
-            return flask.render_template('index_rand.html', movie_name=names, poster_path=poster, trailer=trail)
+            return flask.render_template('index_rand.html', movie_name=names, poster_path=poster1, trailer=trail)
         m_id_poster = []
         m_trailer = []
         for i in m_id:
@@ -111,7 +111,7 @@ def main():
             else:
                 trailer = 'dQw4w9WgXcQ'
             m_trailer.append(trailer)
-        return flask.render_template('index_reco.html', movie_name=names, poster_path=poster, trailer=trail,
+        return flask.render_template('index_reco.html', movie_name=names, poster_path=poster1, trailer=trail,
                                      reco_movie=m_names, reco_date=m_dates, reco_poster=m_id_poster,
                                      reco_trailer=m_trailer)
 
