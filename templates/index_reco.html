@@ -76,7 +76,7 @@ html {
         width: auto;
         box-shadow: 0px 0px 40px -3px grey;
         text-align: center;
-        opacity: 0.6;
+        opacity: 1;
         display:block;
         background-color: darkgrey;
     }
@@ -111,9 +111,6 @@ html {
 </style>
 </head>
 <body>
-<div class="title">
-    <h2>Binge It On</h2>
-</div>
 <div class="container_table">
     <div class="movie">
         <form action="{{ url_for('main') }}" method="POST">
@@ -250,7 +247,7 @@ html {
     <div class="result">
         <article class="thumb">
             <div class="textbox">
-                <a href="https://youtu.be/w44dlsnJ1no" class="image"><img src="https://image.tmdb.org/t/p/w185{{ poster_path }}" alt="Image" /></a>
+                <a href="https://youtu.be/{{ trailer }}" class="image"><img src="https://image.tmdb.org/t/p/w185{{ poster_path }}" alt="Image" /></a>
                 <h2>{{ movie_name }}</h2>
             </div>
         </article>
@@ -260,68 +257,74 @@ html {
         <h2><u>Recommendations:</u></h2>
         <table class="movie_table" align="center">
             <tr>
+                <th>Movie Poster</th>
                 <th>Movie Title</th>
                 <th>Release Date</th>
             </tr>
             <tbody class="table_body">
                 <tr>
+                    <td><a href="https://youtu.be/{{ reco_trailer[0] }}" class="image"><img src="https://image.tmdb.org/t/p/w185{{ reco_poster[0] }}" alt="Image" /></a></td>
                     <td>{{ reco_movie[0] }}</td>
                     <td>{{ reco_date[0] }}</td>
                 </tr>
                 <tr>
+                    <td><a href="https://youtu.be/{{ reco_trailer[1] }}" class="image"><img src="https://image.tmdb.org/t/p/w185{{ reco_poster[1] }}" alt="Image" /></a></td>
                     <td>{{ reco_movie[1] }}</td>
                     <td>{{ reco_date[1] }}</td>
                 </tr>
                 <tr>
+                    <td><a href="https://youtu.be/{{ reco_trailer[2] }}" class="image"><img src="https://image.tmdb.org/t/p/w185{{ reco_poster[2] }}" alt="Image" /></a></td>
                     <td>{{ reco_movie[2] }}</td>
                     <td>{{ reco_date[2] }}</td>
                 </tr>
                 <tr>
+                    <td><a href="https://youtu.be/{{ reco_trailer[3] }}" class="image"><img src="https://image.tmdb.org/t/p/w185{{ reco_poster[3] }}" alt="Image" /></a></td>
                     <td>{{ reco_movie[3] }}</td>
                     <td>{{ reco_date[3] }}</td>
                 </tr>
                 <tr>
+                    <td><a href="https://youtu.be/{{ reco_trailer[4] }}" class="image"><img src="https://image.tmdb.org/t/p/w185{{ reco_poster[4] }}" alt="Image" /></a></td>
                     <td>{{ reco_movie[4] }}</td>
                     <td>{{ reco_date[4] }}</td>
                 </tr>
                 <tr>
+                    <td><a href="https://youtu.be/{{ reco_trailer[5] }}" class="image"><img src="https://image.tmdb.org/t/p/w185{{ reco_poster[5] }}" alt="Image" /></a></td>
                     <td>{{ reco_movie[5] }}</td>
                     <td>{{ reco_date[5] }}</td>
                 </tr>
                 <tr>
+                    <td><a href="https://youtu.be/{{ reco_trailer[6] }}" class="image"><img src="https://image.tmdb.org/t/p/w185{{ reco_poster[6] }}" alt="Image" /></a></td>
                     <td>{{ reco_movie[6] }}</td>
                     <td>{{ reco_date[6] }}</td>
                 </tr>
                 <tr>
+                    <td><a href="https://youtu.be/{{ reco_trailer[7] }}" class="image"><img src="https://image.tmdb.org/t/p/w185{{ reco_poster[7] }}" alt="Image" /></a></td>
                     <td>{{ reco_movie[7] }}</td>
                     <td>{{ reco_date[7] }}</td>
                 </tr>
                 <tr>
+                    <td><a href="https://youtu.be/{{ reco_trailer[8] }}" class="image"><img src="https://image.tmdb.org/t/p/w185{{ reco_poster[8] }}" alt="Image" /></a></td>
                     <td>{{ reco_movie[8] }}</td>
                     <td>{{ reco_date[8] }}</td>
                 </tr>
                 <tr>
+                    <td><a href="https://youtu.be/{{ reco_trailer[9] }}" class="image"><img src="https://image.tmdb.org/t/p/w185{{ reco_poster[9] }}" alt="Image" /></a></td>
                     <td>{{ reco_movie[9] }}</td>
                     <td>{{ reco_date[9] }}</td>
                 </tr>
             </tbody>
         </table>
   </div>
-
-  <!-- Site footer -->
+ <!-- Site footer -->
     <footer class="site-footer">
         <div class="container">
             <h3>About</h3>
             <p class="text-justify">
-                My name is <a href="https://samirhusain.info/">Samir Husain</a>. Business analyst with strong critical
-                thinking and leadership skills. MBA in marketing. Experienced in data analysis, product management,
-                ETL pipelines and business intelligence.
+            <h5>My name is <a href="https://samirhusain.info/">Samir Husain</a>. Business analyst with strong critical
+            thinking and leadership skills. MBA in marketing. Experienced in data analysis, product management,
+            ETL pipelines and business intelligence.</h5>
             </p>
         <hr>
-      </div>
-        <div class="container">
-
-        </div>
     </footer>
 </body>
 </html>
