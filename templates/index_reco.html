@@ -2,6 +2,16 @@
 <html lang="en" >
 <title>Binge it on</title>
 <head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-158471075-2"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-158471075-2');
+</script>
+
   <meta charset="UTF-8">
 <style>
 html {
@@ -37,13 +47,35 @@ html {
         border-radius: 20px;
         padding: 1em;
     }
+    .parent {
+          display: grid;
+          grid-template-columns: auto auto auto auto;
+          grid-gap: 10px;
+          padding: 10px;
+        }
+
+    .child {
+        text-align: center;
+        padding: 20px 0;
+        font-size: 15px;
+        }
+    .genre_parent {
+          display: grid;
+          grid-template-columns: auto auto auto auto;
+        }
+    .genre_child {
+        height: auto;
+        width: auto;
+        font-size: 15px;
+        }
     .container_table {
         display: flex;
         justify-content: center;
     }
     .title {
-        display: flex;
-        justify-content: center;
+        font-family: "Courier New";
+        font-size: 24px;
+        text-align: center;
         color:white;
     }
 
@@ -80,10 +112,6 @@ html {
         display:block;
         background-color: darkgrey;
     }
-    table.center {
-    margin-left:auto;
-    margin-right:auto;
-  }
 
     .result{
         height: auto;
@@ -115,8 +143,10 @@ html {
 </style>
 </head>
 <body>
+<div class="title">
 <h2>Movie recommendation engine</h2>
-<div class="container_table">
+</div>
+    <div class="container_table">
     <div class="movie">
         <form action="{{ url_for('main') }}" method="POST">
             <select name="year" id="year" >
@@ -220,30 +250,26 @@ html {
             <output name="ratingname" id="ratingid" >Minimum rating</output>
             <br>
             <br>
-            <div class="genre">
-                <input type="checkbox" id="formCheck-1" name = "g_Action" value = "28"/><label for="formCheck-1"> Action </label></td>
-                <input type="checkbox" id="formCheck-2" name = "g_Adventure" value = "12"/><label for="formCheck-2"> Adventure </label>
-                <input type="checkbox" id="formCheck-3" name = "g_Animation" value = "16"/><label for="formCheck-3"> Animation </label>
-                <input type="checkbox" id="formCheck-4" name = "g_Comedy" value = "35"/><label for="formCheck-4"> Comedy </label>
-                <br>
-                <input type="checkbox" id="formCheck-5" name = "g_Crime" value = "80"/><label for="formCheck-5"> Crime </label>
-                <input type="checkbox" id="formCheck-6" name = "g_Documentary" value = "99"/><label for="formCheck-6"> Documentary </label>
-                <input type="checkbox" id="formCheck-7" name = "g_Drama" value = "18"/><label for="formCheck-7"> Drama </label>
-                <input type="checkbox" id="formCheck-8" name = "g_Family" value = "10751"/><label for="formCheck-8"> Family </label>
-                <br>
-                <input type="checkbox" id="formCheck-9" name = "g_Fantasy" value = "14"/><label for="formCheck-9"> Fantasy </label>
-                <input type="checkbox" id="formCheck-10" name = "g_History" value = "36"/><label for="formCheck-10"> History </label>
-                <input type="checkbox" id="formCheck-11" name = "g_Horror" value = "27"/><label for="formCheck-11"> Horror </label>
-                <input type="checkbox" id="formCheck-12" name = "g_Music" value = "10402"/><label for="formCheck-12"> Music </label>
-                <br>
-                <input type="checkbox" id="formCheck-13" name = "g_Mystery" value = "9648"/><label for="formCheck-13"> Mystery </label>
-                <input type="checkbox" id="formCheck-14" name = "g_Romance" value = "10749"/><label for="formCheck-14"> Romance </label>
-                <input type="checkbox" id="formCheck-15" name = "g_ScienceFiction" value = "878"/><label for="formCheck-15"> Science Fiction </label>
-                <input type="checkbox" id="formCheck-16" name = "g_TVMovie" value = "10770"/><label for="formCheck-16"> TV Movie </label>
-                <br>
-                <input type="checkbox" id="formCheck-17" name = "g_Thriller" value = "53"/><label for="formCheck-17"> Thriller </label>
-                <input type="checkbox" id="formCheck-18" name = "g_War" value = "10752"/><label for="formCheck-18"> War </label>
-                <input type="checkbox" id="formCheck-19" name = "g_Western" value = "37"/><label for="formCheck-19"> Western </label>
+            <div class="genre_parent">
+                <div class="genre_child"><input type="checkbox" id="formCheck-1" name = "g_Action" value = "28"/><label for="formCheck-1"> Action </label></div>
+                <div class="genre_child"><input type="checkbox" id="formCheck-2" name = "g_Adventure" value = "12"/><label for="formCheck-2"> Adventure </label></div>
+                <div class="genre_child"><input type="checkbox" id="formCheck-3" name = "g_Animation" value = "16"/><label for="formCheck-3"> Animation </label></div>
+                <div class="genre_child"><input type="checkbox" id="formCheck-4" name = "g_Comedy" value = "35"/><label for="formCheck-4"> Comedy </label></div>
+                <div class="genre_child"><input type="checkbox" id="formCheck-5" name = "g_Crime" value = "80"/><label for="formCheck-5"> Crime </label></div>
+                <div class="genre_child"><input type="checkbox" id="formCheck-6" name = "g_Documentary" value = "99"/><label for="formCheck-6"> Documentary </label></div>
+                <div class="genre_child"><input type="checkbox" id="formCheck-7" name = "g_Drama" value = "18"/><label for="formCheck-7"> Drama </label></div>
+                <div class="genre_child"><input type="checkbox" id="formCheck-8" name = "g_Family" value = "10751"/><label for="formCheck-8"> Family </label></div>
+                <div class="genre_child"><input type="checkbox" id="formCheck-19" name = "g_Western" value = "37"/><label for="formCheck-19"> Western </label></div>
+                <div class="genre_child"><input type="checkbox" id="formCheck-18" name = "g_War" value = "10752"/><label for="formCheck-18"> War </label></div>
+                <div class="genre_child"><input type="checkbox" id="formCheck-17" name = "g_Thriller" value = "53"/><label for="formCheck-17"> Thriller </label></div>
+                <div class="genre_child"><input type="checkbox" id="formCheck-16" name = "g_TVMovie" value = "10770"/><label for="formCheck-16"> TV Movie </label></div>
+                <div class="genre_child"><input type="checkbox" id="formCheck-15" name = "g_ScienceFiction" value = "878"/><label for="formCheck-15"> Science Fiction </label></div>
+                <div class="genre_child"><input type="checkbox" id="formCheck-14" name = "g_Romance" value = "10749"/><label for="formCheck-14"> Romance </label></div>
+                <div class="genre_child"><input type="checkbox" id="formCheck-13" name = "g_Mystery" value = "9648"/><label for="formCheck-13"> Mystery </label></div>
+                <div class="genre_child"><input type="checkbox" id="formCheck-12" name = "g_Music" value = "10402"/><label for="formCheck-12"> Music </label></div>
+                <div class="genre_child"><input type="checkbox" id="formCheck-11" name = "g_Horror" value = "27"/><label for="formCheck-11"> Horror </label></div>
+                <div class="genre_child"><input type="checkbox" id="formCheck-10" name = "g_History" value = "36"/><label for="formCheck-10"> History </label></div>
+                <div class="genre_child"><input type="checkbox" id="formCheck-9" name = "g_Fantasy" value = "14"/><label for="formCheck-9"> Fantasy </label></div>
             </div>
             <br>
             <input type="submit" id="submission_button" value="Submit"/>
@@ -260,60 +286,58 @@ html {
     </div>
     <div class="movie_table">
         <h2><u>Recommendations:</u></h2>
-        <table class="center">
-            <tbody class="table_body">
-                <tr>
-                    <td><a href="https://youtu.be/{{ reco_trailer[0] }}" class="image"><img src="https://image.tmdb.org/t/p/w185{{ reco_poster[0] }}" alt="Image" /></a></td>
-                    <td>{{ reco_movie[0] }}</td>
-                    <td>{{ reco_date[0] }}</td>
-                </tr>
-                <tr>
-                    <td><a href="https://youtu.be/{{ reco_trailer[1] }}" class="image"><img src="https://image.tmdb.org/t/p/w185{{ reco_poster[1] }}" alt="Image" /></a></td>
-                    <td>{{ reco_movie[1] }}</td>
-                    <td>{{ reco_date[1] }}</td>
-                </tr>
-                <tr>
-                    <td><a href="https://youtu.be/{{ reco_trailer[2] }}" class="image"><img src="https://image.tmdb.org/t/p/w185{{ reco_poster[2] }}" alt="Image" /></a></td>
-                    <td>{{ reco_movie[2] }}</td>
-                    <td>{{ reco_date[2] }}</td>
-                </tr>
-                <tr>
-                    <td><a href="https://youtu.be/{{ reco_trailer[3] }}" class="image"><img src="https://image.tmdb.org/t/p/w185{{ reco_poster[3] }}" alt="Image" /></a></td>
-                    <td>{{ reco_movie[3] }}</td>
-                    <td>{{ reco_date[3] }}</td>
-                </tr>
-                <tr>
-                    <td><a href="https://youtu.be/{{ reco_trailer[4] }}" class="image"><img src="https://image.tmdb.org/t/p/w185{{ reco_poster[4] }}" alt="Image" /></a></td>
-                    <td>{{ reco_movie[4] }}</td>
-                    <td>{{ reco_date[4] }}</td>
-                </tr>
-                <tr>
-                    <td><a href="https://youtu.be/{{ reco_trailer[5] }}" class="image"><img src="https://image.tmdb.org/t/p/w185{{ reco_poster[5] }}" alt="Image" /></a></td>
-                    <td>{{ reco_movie[5] }}</td>
-                    <td>{{ reco_date[5] }}</td>
-                </tr>
-                <tr>
-                    <td><a href="https://youtu.be/{{ reco_trailer[6] }}" class="image"><img src="https://image.tmdb.org/t/p/w185{{ reco_poster[6] }}" alt="Image" /></a></td>
-                    <td>{{ reco_movie[6] }}</td>
-                    <td>{{ reco_date[6] }}</td>
-                </tr>
-                <tr>
-                    <td><a href="https://youtu.be/{{ reco_trailer[7] }}" class="image"><img src="https://image.tmdb.org/t/p/w185{{ reco_poster[7] }}" alt="Image" /></a></td>
-                    <td>{{ reco_movie[7] }}</td>
-                    <td>{{ reco_date[7] }}</td>
-                </tr>
-                <tr>
-                    <td><a href="https://youtu.be/{{ reco_trailer[8] }}" class="image"><img src="https://image.tmdb.org/t/p/w185{{ reco_poster[8] }}" alt="Image" /></a></td>
-                    <td>{{ reco_movie[8] }}</td>
-                    <td>{{ reco_date[8] }}</td>
-                </tr>
-                <tr>
-                    <td><a href="https://youtu.be/{{ reco_trailer[9] }}" class="image"><img src="https://image.tmdb.org/t/p/w185{{ reco_poster[9] }}" alt="Image" /></a></td>
-                    <td>{{ reco_movie[9] }}</td>
-                    <td>{{ reco_date[9] }}</td>
-                </tr>
-            </tbody>
-        </table>
+        <div class="parent">
+                <div class="child">
+                    <a href="https://youtu.be/{{ reco_trailer[0] }}" class="image"><img src="https://image.tmdb.org/t/p/w185{{ reco_poster[0] }}" alt="Image" /></a>
+                    <br>{{ reco_movie[0] }}
+                    <br>{{ reco_date[0] }}
+                </div>
+                <div class="child">
+                    <a href="https://youtu.be/{{ reco_trailer[1] }}" class="image"><img src="https://image.tmdb.org/t/p/w185{{ reco_poster[1] }}" alt="Image" /></a>
+                    <br>{{ reco_movie[1] }}
+                    <br>{{ reco_date[1] }}
+                </div>
+                <div class="child">
+                    <a href="https://youtu.be/{{ reco_trailer[2] }}" class="image"><img src="https://image.tmdb.org/t/p/w185{{ reco_poster[2] }}" alt="Image" /></a>
+                    <br>{{ reco_movie[2] }}
+                    <br>{{ reco_date[2] }}
+                </div>
+                <div class="child">
+                    <a href="https://youtu.be/{{ reco_trailer[3] }}" class="image"><img src="https://image.tmdb.org/t/p/w185{{ reco_poster[3] }}" alt="Image" /></a>
+                    <br>{{ reco_movie[3] }}
+                    <br>{{ reco_date[3] }}
+                </div>
+                <div class="child">
+                    <a href="https://youtu.be/{{ reco_trailer[4] }}" class="image"><img src="https://image.tmdb.org/t/p/w185{{ reco_poster[4] }}" alt="Image" /></a>
+                    <br>{{ reco_movie[4] }}
+                    <br>{{ reco_date[4] }}
+                </div>
+                <div class="child">
+                    <a href="https://youtu.be/{{ reco_trailer[5] }}" class="image"><img src="https://image.tmdb.org/t/p/w185{{ reco_poster[5] }}" alt="Image" /></a>
+                    <br>{{ reco_movie[5] }}
+                    <br>{{ reco_date[5] }}
+                </div>
+                <div class="child">
+                    <a href="https://youtu.be/{{ reco_trailer[6] }}" class="image"><img src="https://image.tmdb.org/t/p/w185{{ reco_poster[6] }}" alt="Image" /></a>
+                    <br>{{ reco_movie[6] }}
+                    <br>{{ reco_date[6] }}
+                </div>
+                <div class="child">
+                    <a href="https://youtu.be/{{ reco_trailer[7] }}" class="image"><img src="https://image.tmdb.org/t/p/w185{{ reco_poster[7] }}" alt="Image" /></a>
+                    <br>{{ reco_movie[7] }}
+                    <br>{{ reco_date[7] }}
+                </div>
+                <div class="child">
+                    <a href="https://youtu.be/{{ reco_trailer[8] }}" class="image"><img src="https://image.tmdb.org/t/p/w185{{ reco_poster[8] }}" alt="Image" /></a>
+                    <br>{{ reco_movie[8] }}
+                    <br>{{ reco_date[8] }}
+                </div>
+                <div class="child">
+                    <a href="https://youtu.be/{{ reco_trailer[9] }}" class="image"><img src="https://image.tmdb.org/t/p/w185{{ reco_poster[9] }}" alt="Image" /></a>
+                    <br>{{ reco_movie[9] }}
+                    <br>{{ reco_date[9] }}
+                </div>
+        </div>
   </div>
  <!-- Site footer -->
     <footer class="site-footer">

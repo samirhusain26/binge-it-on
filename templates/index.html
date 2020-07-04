@@ -2,6 +2,16 @@
 <html lang="en" >
 <title>Binge it on</title>
 <head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-158471075-2"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-158471075-2');
+</script>
+
   <meta charset="UTF-8">
 <style>
 html {
@@ -42,8 +52,9 @@ html {
         justify-content: center;
     }
     .title {
-        display: flex;
-        justify-content: center;
+        font-family: "Courier New";
+        font-size: 24px;
+        text-align: center;
         color:white;
     }
 
@@ -58,29 +69,22 @@ html {
         margin-left: 5vh;
         border-radius: 20px;
         padding: 1em;
-        width: 300px;
+        width: 500px;
         box-shadow: 0px 0px 40px -3px grey;
         text-align: center;
         opacity: 0.6;
         flex: 0 0 35%;
         background-color: darkgrey;
     }
-    .movie_table{
+    .genre_parent {
+          display: grid;
+          grid-template-columns: auto auto auto auto;
+        }
+    .genre_child {
         height: auto;
-        margin-top: 5vh;
-        margin-bottom: 5vh;
-        margin-right: 5vh;
-        margin-left: 5vh;
-        border-radius: 20px;
-        padding: 1em;
         width: auto;
-        box-shadow: 0px 0px 40px -3px grey;
-        text-align: center;
-        opacity: 0.6;
-        display:block;
-        background-color: darkgrey;
-    }
-
+        font-size: 15px;
+        }
     .result{
         height: auto;
         margin-top: 5vh;
@@ -111,7 +115,9 @@ html {
 </style>
 </head>
 <body>
+<div class="title">
 <h2>Movie recommendation engine</h2>
+</div>
 <div class="container_table">
     <div class="movie">
         <form action="{{ url_for('main') }}" method="POST">
@@ -216,30 +222,26 @@ html {
             <output name="ratingname" id="ratingid" >Minimum rating</output>
             <br>
             <br>
-            <div class="genre">
-                <input type="checkbox" id="formCheck-1" name = "g_Action" value = "28"/><label for="formCheck-1"> Action </label></td>
-                <input type="checkbox" id="formCheck-2" name = "g_Adventure" value = "12"/><label for="formCheck-2"> Adventure </label>
-                <input type="checkbox" id="formCheck-3" name = "g_Animation" value = "16"/><label for="formCheck-3"> Animation </label>
-                <input type="checkbox" id="formCheck-4" name = "g_Comedy" value = "35"/><label for="formCheck-4"> Comedy </label>
-                <br>
-                <input type="checkbox" id="formCheck-5" name = "g_Crime" value = "80"/><label for="formCheck-5"> Crime </label>
-                <input type="checkbox" id="formCheck-6" name = "g_Documentary" value = "99"/><label for="formCheck-6"> Documentary </label>
-                <input type="checkbox" id="formCheck-7" name = "g_Drama" value = "18"/><label for="formCheck-7"> Drama </label>
-                <input type="checkbox" id="formCheck-8" name = "g_Family" value = "10751"/><label for="formCheck-8"> Family </label>
-                <br>
-                <input type="checkbox" id="formCheck-9" name = "g_Fantasy" value = "14"/><label for="formCheck-9"> Fantasy </label>
-                <input type="checkbox" id="formCheck-10" name = "g_History" value = "36"/><label for="formCheck-10"> History </label>
-                <input type="checkbox" id="formCheck-11" name = "g_Horror" value = "27"/><label for="formCheck-11"> Horror </label>
-                <input type="checkbox" id="formCheck-12" name = "g_Music" value = "10402"/><label for="formCheck-12"> Music </label>
-                <br>
-                <input type="checkbox" id="formCheck-13" name = "g_Mystery" value = "9648"/><label for="formCheck-13"> Mystery </label>
-                <input type="checkbox" id="formCheck-14" name = "g_Romance" value = "10749"/><label for="formCheck-14"> Romance </label>
-                <input type="checkbox" id="formCheck-15" name = "g_ScienceFiction" value = "878"/><label for="formCheck-15"> Science Fiction </label>
-                <input type="checkbox" id="formCheck-16" name = "g_TVMovie" value = "10770"/><label for="formCheck-16"> TV Movie </label>
-                <br>
-                <input type="checkbox" id="formCheck-17" name = "g_Thriller" value = "53"/><label for="formCheck-17"> Thriller </label>
-                <input type="checkbox" id="formCheck-18" name = "g_War" value = "10752"/><label for="formCheck-18"> War </label>
-                <input type="checkbox" id="formCheck-19" name = "g_Western" value = "37"/><label for="formCheck-19"> Western </label>
+            <div class="genre_parent">
+                <div class="genre_child"><input type="checkbox" id="formCheck-1" name = "g_Action" value = "28"/><label for="formCheck-1"> Action </label></div>
+                <div class="genre_child"><input type="checkbox" id="formCheck-2" name = "g_Adventure" value = "12"/><label for="formCheck-2"> Adventure </label></div>
+                <div class="genre_child"><input type="checkbox" id="formCheck-3" name = "g_Animation" value = "16"/><label for="formCheck-3"> Animation </label></div>
+                <div class="genre_child"><input type="checkbox" id="formCheck-4" name = "g_Comedy" value = "35"/><label for="formCheck-4"> Comedy </label></div>
+                <div class="genre_child"><input type="checkbox" id="formCheck-5" name = "g_Crime" value = "80"/><label for="formCheck-5"> Crime </label></div>
+                <div class="genre_child"><input type="checkbox" id="formCheck-6" name = "g_Documentary" value = "99"/><label for="formCheck-6"> Documentary </label></div>
+                <div class="genre_child"><input type="checkbox" id="formCheck-7" name = "g_Drama" value = "18"/><label for="formCheck-7"> Drama </label></div>
+                <div class="genre_child"><input type="checkbox" id="formCheck-8" name = "g_Family" value = "10751"/><label for="formCheck-8"> Family </label></div>
+                <div class="genre_child"><input type="checkbox" id="formCheck-19" name = "g_Western" value = "37"/><label for="formCheck-19"> Western </label></div>
+                <div class="genre_child"><input type="checkbox" id="formCheck-18" name = "g_War" value = "10752"/><label for="formCheck-18"> War </label></div>
+                <div class="genre_child"><input type="checkbox" id="formCheck-17" name = "g_Thriller" value = "53"/><label for="formCheck-17"> Thriller </label></div>
+                <div class="genre_child"><input type="checkbox" id="formCheck-16" name = "g_TVMovie" value = "10770"/><label for="formCheck-16"> TV Movie </label></div>
+                <div class="genre_child"><input type="checkbox" id="formCheck-15" name = "g_ScienceFiction" value = "878"/><label for="formCheck-15"> Science Fiction </label></div>
+                <div class="genre_child"><input type="checkbox" id="formCheck-14" name = "g_Romance" value = "10749"/><label for="formCheck-14"> Romance </label></div>
+                <div class="genre_child"><input type="checkbox" id="formCheck-13" name = "g_Mystery" value = "9648"/><label for="formCheck-13"> Mystery </label></div>
+                <div class="genre_child"><input type="checkbox" id="formCheck-12" name = "g_Music" value = "10402"/><label for="formCheck-12"> Music </label></div>
+                <div class="genre_child"><input type="checkbox" id="formCheck-11" name = "g_Horror" value = "27"/><label for="formCheck-11"> Horror </label></div>
+                <div class="genre_child"><input type="checkbox" id="formCheck-10" name = "g_History" value = "36"/><label for="formCheck-10"> History </label></div>
+                <div class="genre_child"><input type="checkbox" id="formCheck-9" name = "g_Fantasy" value = "14"/><label for="formCheck-9"> Fantasy </label></div>
             </div>
             <br>
             <input type="submit" id="submission_button" value="Submit"/>

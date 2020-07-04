@@ -87,7 +87,7 @@ def main():
             m_names = []
             m_dates = []
             m_id = []
-            for mov in movies[0:9]:
+            for mov in movies[0:8]:
                 m_names.append(mov['title'])
                 m_dates.append(mov['release_date'])
                 m_id.append(mov['id'])
