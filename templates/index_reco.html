@@ -16,7 +16,7 @@ html {
 
     body {
         background-position:center;
-        background-image: url("bg.jpg");
+        background-image: url("https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?ixlib=rb-1.2.1&auto=format&fit=crop&w=1650&q=80");
         background-repeat: no-repeat;
         background-attachment: fixed;
         background-size: cover;
@@ -80,6 +80,10 @@ html {
         display:block;
         background-color: darkgrey;
     }
+    table.center {
+    margin-left:auto;
+    margin-right:auto;
+  }
 
     .result{
         height: auto;
@@ -255,12 +259,7 @@ html {
     </div>
     <div class="movie_table">
         <h2><u>Recommendations:</u></h2>
-        <table class="movie_table" align="center">
-            <tr>
-                <th>Movie Poster</th>
-                <th>Movie Title</th>
-                <th>Release Date</th>
-            </tr>
+        <table class="center">
             <tbody class="table_body">
                 <tr>
                     <td><a href="https://youtu.be/{{ reco_trailer[0] }}" class="image"><img src="https://image.tmdb.org/t/p/w185{{ reco_poster[0] }}" alt="Image" /></a></td>

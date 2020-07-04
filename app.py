@@ -39,7 +39,7 @@ def get_recommendations(title):
 @app.route('/', methods=['GET', 'POST'])
 def main():
     if flask.request.method == 'GET':
-        return (flask.render_template('index.html'))
+        return flask.render_template('index.html')
 
     if flask.request.method == 'POST':
         yr = flask.request.form['year']
@@ -56,8 +56,8 @@ def main():
         if not gen:
             gen = '28,12,16'
         response = requests.get('https://api.themoviedb.org/3/discover/movie?api_key=' + api_key
-                                + '&language=en-US&sort_by=popularity.desc&include_adult=true&include_video=false&page=1'
-                                  '&primary_release_date.gte=' + yr
+                                + '&language=en-US&sort_by=popularity.desc&include_adult=true&include_video=false'
+                                  '&page=1&primary_release_date.gte=' + yr
                                 + '&vote_average.gte=' + rate
                                 + '&with_genres=' + gen)
         result = response.json()
@@ -66,13 +66,14 @@ def main():
         names = rand_movie['title']
         poster = rand_movie['poster_path']
         response1 = requests.get("https://api.themoviedb.org/3/movie/" + str(rand_movie['id']) +
-                                "/videos?api_key=" + api_key +
-                                "& language = en - US")
+                                 "/videos?api_key=" + api_key +
+                                 "& language = en - US")
         result1 = response1.json()
-        if len(result1) > 1:
+        if len(result1['results']) > 1:
             trail = result1['results'][0]['key']
         else:
             trail = 'dQw4w9WgXcQ'
+
         if names in all_titles:
             result_final = get_recommendations(names)
             m_names = []
@@ -82,10 +83,18 @@ def main():
                 m_names.append(result_final.iloc[i][0])
                 m_dates.append(result_final.iloc[i][1])
                 m_id.append(result_final.iloc[i][2])
+        elif len(movies) > 10:
+            m_names = []
+            m_dates = []
+            m_id = []
+            for mov in movies[0:9]:
+                m_names.append(mov['title'])
+                m_dates.append(mov['release_date'])
+                m_id.append(mov['id'])
         else:
             return flask.render_template('index_rand.html', movie_name=names, poster_path=poster, trailer=trail)
         m_id_poster = []
-        m_trailer=[]
+        m_trailer = []
         for i in m_id:
             response = requests.get("https://api.themoviedb.org/3/movie/" + str(i) +
                                     "?api_key=" + api_key +
@@ -97,13 +106,15 @@ def main():
                                     "/videos?api_key=" + api_key +
                                     "& language = en - US")
             result = response.json()
-            if len(result)>1:
-                trailer=result['results'][0]['key']
+            if len(result) > 1:
+                trailer = result['results'][0]['key']
             else:
-                trailer='dQw4w9WgXcQ'
+                trailer = 'dQw4w9WgXcQ'
             m_trailer.append(trailer)
         return flask.render_template('index_reco.html', movie_name=names, poster_path=poster, trailer=trail,
-                                     reco_movie=m_names, reco_date=m_dates, reco_poster=m_id_poster, reco_trailer=m_trailer)
+                                     reco_movie=m_names, reco_date=m_dates, reco_poster=m_id_poster,
+                                     reco_trailer=m_trailer)
+
 
 if __name__ == '__main__':
     app.run()
