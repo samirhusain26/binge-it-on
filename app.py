@@ -44,15 +44,12 @@ def main():
     if flask.request.method == 'POST':
         yr = flask.request.form['year']
         rate = flask.request.form['rating']
-        gen_l = []
-        for e in flask.request.form:
-            if e[0:2] == "g_":
-                gen_l.append(flask.request.form[e])
-        gen = ','.join(map(str, gen_l))
+        gen_list = flask.request.form.getlist('genre_select')
+        gen = ','.join(map(str, gen_list))
         if yr == "Should not be older than":
-            yr = '1960'
+            yr = '2012'
         if not rate:
-            rate = '3'
+            rate = '7'
         if not gen:
             gen = '28,12,16'
         response = requests.get('https://api.themoviedb.org/3/discover/movie?api_key=' + api_key
@@ -62,6 +59,16 @@ def main():
                                 + '&with_genres=' + gen)
         result = response.json()
         movies = result['results']
+        if len(movies)<2:
+            gen_list = flask.request.form.getlist('genre_select')[0:3]
+            gen = ','.join(map(str, gen_list))
+            response = requests.get('https://api.themoviedb.org/3/discover/movie?api_key=' + api_key
+                                    + '&language=en-US&sort_by=popularity.desc&include_adult=true&include_video=false'
+                                      '&page=1&primary_release_date.gte=' + yr
+                                    + '&vote_average.gte=' + rate
+                                    + '&with_genres=' + gen)
+            result = response.json()
+            movies = result['results']
         rand_movie = random.choice(movies)
         names = rand_movie['title']
         poster1 = rand_movie['poster_path']
@@ -87,7 +94,7 @@ def main():
             m_names = []
             m_dates = []
             m_id = []
-            for mov in movies[0:8]:
+            for mov in movies[0:10]:
                 m_names.append(mov['title'])
                 m_dates.append(mov['release_date'])
                 m_id.append(mov['id'])
@@ -106,7 +113,7 @@ def main():
                                     "/videos?api_key=" + api_key +
                                     "& language = en - US")
             result = response.json()
-            if len(result) > 1:
+            if len(result['results']) > 1:
                 trailer = result['results'][0]['key']
             else:
                 trailer = 'dQw4w9WgXcQ'

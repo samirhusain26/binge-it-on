@@ -11,6 +11,11 @@
 
   gtag('config', 'UA-158471075-2');
 </script>
+        <link rel="stylesheet" href="http://code.jquery.com/ui/1.9.2/themes/base/jquery-ui.css">
+    <script src="http://code.jquery.com/jquery-1.8.3.js"></script>
+    <script src="http://code.jquery.com/ui/1.9.2/jquery-ui.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/chosen/1.4.2/chosen.jquery.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/chosen/1.4.2/chosen.css">
 
   <meta charset="UTF-8">
 <style>
@@ -81,6 +86,10 @@ html {
 
     .textbox {
         opacity:1;
+        margin-top: 8vh;
+        margin-bottom: 5vh;
+        margin-right: 5vh;
+        margin-left: 5vh;
     }
     .movie{
         height: auto;
@@ -111,6 +120,14 @@ html {
         opacity: 1;
         display:block;
         background-color: darkgrey;
+    }
+    .formitems{
+        height: auto;
+        margin-top: 13vh;
+        margin-bottom: 5vh;
+        margin-right: 5vh;
+        margin-left: 5vh;
+        text-align: center;
     }
 
     .result{
@@ -143,13 +160,21 @@ html {
 </style>
 </head>
 <body>
+<script type="text/javascript">
+$(function() {
+    $(".chzn-select").chosen();
+});
+</script>
 <div class="title">
 <h2>Movie recommendation engine</h2>
 </div>
     <div class="container_table">
     <div class="movie">
+        <div class="formitems">
         <form action="{{ url_for('main') }}" method="POST">
-            <select name="year" id="year" >
+                <output name="ratingname" id="ratingid" >Movies not older than</output>
+
+            <select name="year" id="year" style="width: 300px;">
                 <option>Should not be older than</option>
                 <option value="2020">2020</option>
                 <option value="2019">2019</option>
@@ -244,36 +269,47 @@ html {
                 <option value="1930">1930</option>
             </select>
             <br>
+                <br>
             <br>
-            <input type="range" min="1" max="10" value="6" class="slider" id="rating" name="rating" oninput="ratingid.value = rating.value">
-            <br>
+
             <output name="ratingname" id="ratingid" >Minimum rating</output>
             <br>
+            <input type="range" min="1" max="10" style="width: 300px;" value="7" class="slider" id="rating" name="rating" oninput="rate_id.value = rating.value">
+                <output name="rating_name" id="rate_id" >7</output>
+
             <br>
-            <div class="genre_parent">
-                <div class="genre_child"><input type="checkbox" id="formCheck-1" name = "g_Action" value = "28"/><label for="formCheck-1"> Action </label></div>
-                <div class="genre_child"><input type="checkbox" id="formCheck-2" name = "g_Adventure" value = "12"/><label for="formCheck-2"> Adventure </label></div>
-                <div class="genre_child"><input type="checkbox" id="formCheck-3" name = "g_Animation" value = "16"/><label for="formCheck-3"> Animation </label></div>
-                <div class="genre_child"><input type="checkbox" id="formCheck-4" name = "g_Comedy" value = "35"/><label for="formCheck-4"> Comedy </label></div>
-                <div class="genre_child"><input type="checkbox" id="formCheck-5" name = "g_Crime" value = "80"/><label for="formCheck-5"> Crime </label></div>
-                <div class="genre_child"><input type="checkbox" id="formCheck-6" name = "g_Documentary" value = "99"/><label for="formCheck-6"> Documentary </label></div>
-                <div class="genre_child"><input type="checkbox" id="formCheck-7" name = "g_Drama" value = "18"/><label for="formCheck-7"> Drama </label></div>
-                <div class="genre_child"><input type="checkbox" id="formCheck-8" name = "g_Family" value = "10751"/><label for="formCheck-8"> Family </label></div>
-                <div class="genre_child"><input type="checkbox" id="formCheck-19" name = "g_Western" value = "37"/><label for="formCheck-19"> Western </label></div>
-                <div class="genre_child"><input type="checkbox" id="formCheck-18" name = "g_War" value = "10752"/><label for="formCheck-18"> War </label></div>
-                <div class="genre_child"><input type="checkbox" id="formCheck-17" name = "g_Thriller" value = "53"/><label for="formCheck-17"> Thriller </label></div>
-                <div class="genre_child"><input type="checkbox" id="formCheck-16" name = "g_TVMovie" value = "10770"/><label for="formCheck-16"> TV Movie </label></div>
-                <div class="genre_child"><input type="checkbox" id="formCheck-15" name = "g_ScienceFiction" value = "878"/><label for="formCheck-15"> Science Fiction </label></div>
-                <div class="genre_child"><input type="checkbox" id="formCheck-14" name = "g_Romance" value = "10749"/><label for="formCheck-14"> Romance </label></div>
-                <div class="genre_child"><input type="checkbox" id="formCheck-13" name = "g_Mystery" value = "9648"/><label for="formCheck-13"> Mystery </label></div>
-                <div class="genre_child"><input type="checkbox" id="formCheck-12" name = "g_Music" value = "10402"/><label for="formCheck-12"> Music </label></div>
-                <div class="genre_child"><input type="checkbox" id="formCheck-11" name = "g_Horror" value = "27"/><label for="formCheck-11"> Horror </label></div>
-                <div class="genre_child"><input type="checkbox" id="formCheck-10" name = "g_History" value = "36"/><label for="formCheck-10"> History </label></div>
-                <div class="genre_child"><input type="checkbox" id="formCheck-9" name = "g_Fantasy" value = "14"/><label for="formCheck-9"> Fantasy </label></div>
+            <br>
+            <div>
+                <output name="ratingname" id="ratingid" >Genres that you like</output>
+            <select id="genre_sel" class="chzn-select" multiple="true" style="width: 300px;" name="genre_select">
+                <option value = "28">Action</option>
+                <option value = "12">Adventure</option>
+                <option value = "16">Animation</option>
+                <option value = "35">Comedy</option>
+                <option value = "80">Crime</option>
+                <option value = "99">Documentary</option>
+                <option value = "18">Drama</option>
+                <option value = "10751">Family</option>
+                <option value = "37">Western</option>
+                <option value = "10752">War</option>
+                <option value = "53">Thriller</option>
+                <option value = "10770">TV Movie</option>
+                <option value = "878">Science Fiction</option>
+                <option value = "10749">Romance</option>
+                <option value = "9648">Mystery</option>
+                <option value = "10402">Music</option>
+                <option value = "27">Horror</option>
+                <option value = "36">History</option>
+                <option value = "14">Fantasy</option>
+            </select>
+                <br>
+
             </div>
+            <br>
             <br>
             <input type="submit" id="submission_button" value="Submit"/>
         </form>
+            </div>
     </div>
     <div class="result">
         <article class="thumb">
