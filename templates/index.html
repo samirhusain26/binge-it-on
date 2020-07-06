@@ -150,15 +150,9 @@ html {
 <body>
     <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/chosen/1.4.2/chosen.jquery.min.js"></script>
-    <script>// Additional logic goes here</script>
 <script type="text/javascript">
 $(function() {
     $(".chzn-select").chosen();
-});
-$('option').mousedown(function(e) {
-    e.preventDefault();
-    $(this).prop('selected', !$(this).prop('selected'));
-    return false;
 });
 </script>
 
