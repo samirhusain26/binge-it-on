@@ -160,7 +160,13 @@ html {
 $(function() {
     $(".chzn-select").chosen();
 });
+$('option').mousedown(function(e) {
+    e.preventDefault();
+    $(this).prop('selected', !$(this).prop('selected'));
+    return false;
+});
 </script>
+
 
 <div class="title">
 <h2>Movie recommendation engine</h2>
