@@ -2,29 +2,23 @@
 <html lang="en" >
 <title>Binge it on</title>
 <head>
-
     <!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-158471075-2"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'UA-158471075-2');
-</script>
-    <link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/chosen/1.1.0/chosen.min.css">
-    <script type="text/javascript" src="static/chosen/chosen.jquery.min.js"></script>
-    <link rel="stylesheet" href="http://code.jquery.com/ui/1.9.2/themes/base/jquery-ui.css">
-    <script src="http://code.jquery.com/jquery-1.8.3.js"></script>
-    <script src="http://code.jquery.com/ui/1.9.2/jquery-ui.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/chosen/1.4.2/chosen.jquery.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/chosen/1.4.2/chosen.css">
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-158471075-2"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'UA-158471075-2');
+    </script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="https://fonts.googleapis.com/css?family=Roboto+Slab" rel="stylesheet">
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.9.2/themes/base/jquery-ui.css">
     <link rel="stylesheet" type="text/css" href="footer.css">
-
-
-  <meta charset="UTF-8">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <!-- Chosen -->
+    <link href='chosen/chosen.min.css' rel='stylesheet' type='text/css'>
+    <script src='chosen/chosen.jquery.min.js' type='text/javascript'></script>
+    <meta charset="UTF-8">
 <style>
 html {
   box-sizing: border-box;
@@ -272,19 +266,14 @@ $('option').mousedown(function(e) {
                 <option value="1931">1931</option>
                 <option value="1930">1930</option>
             </select>
-            <br>
-                <br>
-            <br>
-
+            <br><br><br>
             <output name="ratingname" id="ratingid" >Minimum rating</output>
             <br>
             <input type="range" min="1" max="10" style="width: 300px;" value="7" class="slider" id="rating" name="rating" oninput="rate_id.value = rating.value">
                 <output name="rating_name" id="rate_id" >7</output>
-
-            <br>
-            <br>
+            <br><br>
             <div>
-                <output name="ratingname" id="ratingid" >Genres that you like</output>
+                <output name="ratingname" id="ratingid" >Genres (select multiple)</output>
             <select id="genre_sel" class="chzn-select" multiple="true" style="width: 300px; height: 200px;" name="genre_select">
                 <option value = "28">Action</option>
                 <option value = "12">Adventure</option>
@@ -307,7 +296,6 @@ $('option').mousedown(function(e) {
                 <option value = "14">Fantasy</option>
             </select>
                 <br>
-
             </div>
             <br>
             <br>

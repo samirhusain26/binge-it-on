@@ -287,7 +287,7 @@ $('option').mousedown(function(e) {
             <br>
             <br>
             <div>
-                <output name="ratingname" id="ratingid" >Genres that you like</output>
+                <output name="ratingname" id="ratingid" >Genres (select multiple)</output>
             <select id="genre_sel" class="chzn-select" multiple="true" style="width: 300px; height: 200px;" name="genre_select">
                 <option value = "28">Action</option>
                 <option value = "12">Adventure</option>
@@ -323,6 +323,7 @@ $('option').mousedown(function(e) {
             <div class="textbox">
                 <a href="https://youtu.be/{{ trailer }}" class="image"><img src="https://image.tmdb.org/t/p/w185{{ poster_path }}" alt="Image" /></a>
                 <h2>{{ movie_name }}</h2>
+                <p>{{ plot }}</p>
             </div>
         </article>
     </div>
