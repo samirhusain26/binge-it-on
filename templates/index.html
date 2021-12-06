@@ -35,7 +35,7 @@ html {
         background-attachment: fixed;
         background-size: cover;
         font-family: "Poppins", sans-serif;
-        font-weight: 300;
+        font-weight: 600;
         font-size: 100%;
         line-height: 1.5;
         color: #000;
@@ -167,7 +167,7 @@ $(function() {
             <form action="{{ url_for('main') }}" method="POST">
                 <output name="ratingname" id="ratingid" >Movies not older than</output>
 
-            <select name="year" id="year" style="width: 300px;">
+            <select name="year" id="year" style="width: 400px;">
                 <option>Should not be older than</option>
                 <option value="2020">2020</option>
                 <option value="2019">2019</option>
@@ -235,41 +235,16 @@ $(function() {
                 <option value="1957">1957</option>
                 <option value="1956">1956</option>
                 <option value="1955">1955</option>
-                <option value="1954">1954</option>
-                <option value="1953">1953</option>
-                <option value="1952">1952</option>
-                <option value="1951">1951</option>
-                <option value="1950">1950</option>
-                <option value="1949">1949</option>
-                <option value="1948">1948</option>
-                <option value="1947">1947</option>
-                <option value="1946">1946</option>
-                <option value="1945">1945</option>
-                <option value="1944">1944</option>
-                <option value="1943">1943</option>
-                <option value="1942">1942</option>
-                <option value="1941">1941</option>
-                <option value="1940">1940</option>
-                <option value="1939">1939</option>
-                <option value="1938">1938</option>
-                <option value="1937">1937</option>
-                <option value="1936">1936</option>
-                <option value="1935">1935</option>
-                <option value="1934">1934</option>
-                <option value="1933">1933</option>
-                <option value="1932">1932</option>
-                <option value="1931">1931</option>
-                <option value="1930">1930</option>
             </select>
             <br><br><br>
             <output name="ratingname" id="ratingid" >Minimum rating</output>
             <br>
-            <input type="range" min="1" max="10" style="width: 300px;" value="7" class="slider" id="rating" name="rating" oninput="rate_id.value = rating.value">
+            <input type="range" min="1" max="10" style="width: 400px;" value="7" class="slider" id="rating" name="rating" oninput="rate_id.value = rating.value">
                 <output name="rating_name" id="rate_id" >7</output>
             <br><br>
             <div>
                 <output name="ratingname" id="ratingid" >Genres (select multiple)</output>
-            <select id="genre_sel" class="chzn-select" multiple="true" style="width: 300px; height: 200px;" name="genre_select">
+            <select id="genre_sel" class="chzn-select" multiple="true" style="width: 400px; height: 200px;" name="genre_select">
                 <option value = "28">Action</option>
                 <option value = "12">Adventure</option>
                 <option value = "16">Animation</option>
@@ -302,8 +277,8 @@ $(function() {
         <article class="thumb">
             <div class="textbox">
                 <h2>Hello Stranger!</h2>
-                <h4>Movies are hard to choose. Take the decision making out of your next binge session. Fill in your
-                    preferences and get suggested a movie and 10 more based on a custom recommendation engine.
+                <h4>Movies are hard to choose. Take the decision-making out of your next binge session. Fill in your
+                    preferences and get a free movie suggestion.
                 </h4>
             </div>
         </article>
