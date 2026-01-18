@@ -1,11 +1,15 @@
 import flask
+import os
+from dotenv import load_dotenv
+
+load_dotenv()
 from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
 import requests
 import pandas as pd
 import random
 
-api_key = 'e5e135ca8f4f2ecfe0a67c9998a5441a'
+api_key = os.getenv('TMDB_API_KEY')
 
 app = flask.Flask(__name__, template_folder='templates')
 
